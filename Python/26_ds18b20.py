@@ -5,8 +5,10 @@
 #		replace the 28-XXXXXXXXX as yours.
 #----------------------------------------------------------------
 import os
+import datetime
 
 ds18b20 = ''
+now=datetime.datetime.now()
 
 def setup():
 	global ds18b20
@@ -29,7 +31,8 @@ def read():
 def loop():
 	while True:
 		if read() != None:
-			print ("Current temperature : %0.3f C" % read())
+			#print ("Current temperature : %0.3f C" % read())
+			print ('Current temperature : {0:0.3f} C and time: {1}'.format( read(), now.strftime("%Y-%m-%d %H:%M:%S")))
 
 def destroy():
 	pass
